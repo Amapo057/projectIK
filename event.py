@@ -49,7 +49,6 @@ ending_credit = ["결말에 도달하셨습니다. 즐겨주셔서 감사합니�
 
 
 
-
 def main_e1():
        global day, step, choice, choice2, percent
        if step == 0:
@@ -159,3 +158,5 @@ def next():
        step = 0
        choice = 0
        choice2 = 0  
+asdf
+asdf
