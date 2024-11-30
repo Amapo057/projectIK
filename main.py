@@ -1,6 +1,7 @@
 # projectIK
 import pygame as pg
 import event as ev
+import random
 
 # 이미지 불러오기
 background_path = ['background/background.png']
@@ -11,8 +12,7 @@ for path in  background_path:
 
 # 기본 변수
 PLAY = True
-
-rect = 0
+r = 0
 
 while PLAY:    
     for event in pg.event.get():
@@ -24,7 +24,8 @@ while PLAY:
 
     if ev.day <= 1:
         ev.main_e1()
-    elif ev.day == 2:
+        r = random.randint(1, 8)
+    elif ev.day == 4:
         ev.main_e2()
         print("ev.day4")
     elif ev.day == 7:
@@ -33,7 +34,7 @@ while PLAY:
     elif ev.day == 10:
         ev.main_e1()
     else:
-        ev.sub_e()
+        ev.sub_e(1)
 
     pg.display.flip()  # 화면 업데이트
 
