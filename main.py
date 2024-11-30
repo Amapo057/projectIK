@@ -3,13 +3,6 @@ import pygame as pg
 import event as ev
 import random
 
-# 이미지 불러오기
-background_path = ['background/background.png']
-# 이미지 넣기
-background = []
-for path in  background_path:
-    background.append(pg.image.load(path))
-
 # 기본 변수
 PLAY = True
 r = 0
@@ -18,9 +11,6 @@ while PLAY:
     for event in pg.event.get():
         if event.type == pg.QUIT:
             PLAY = False
-
-    ev.screen.fill((0, 0, 0))  # 화면을 검은색으로 채우기
-    ev.screen.blit(background[0], (0, 0))
 
     if ev.day <= 1:
         ev.main_e1()
