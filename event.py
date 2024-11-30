@@ -26,7 +26,7 @@ day = 1
 step = 0
 choice = 0
 choice2 = 0
-choice3 = 0
+percent = True
 pers = 0
 perb = False
 
@@ -41,7 +41,7 @@ m1_e221 = ["경적을 울리며 빠른 속도로 달려오는 트럭에 공포�
            "계속"]
 m1_e222 = ["끼이익 거리는 소리와 함께 트럭이 쭉 밀려 나오더니 다행히도 내 바로 앞에서 멈췄다. 트럭 기사가 차에서 내려 미쳤냐며 고래고래 소리를 지른다. 기사의 외침은 귀에 들어오지 않으며 살았다는 안도감만이 나를 감쌌다.  기사님께 죄송하다며 재차 사과를 드리고 떨리는 다리를 붙잡고 집으로 향했다.", 
            "(히든 엔딩 - 천운)"]
-ep3 = ["서브이벤트 입니다 줄바꿈 테스트 중 줄바 꿈 이이이잉 앗쌀라마라이꿍", 
+sub1 = ["서브이벤트 1입니다", 
        "1. ㅁㄴㅇㄹ", 
        "2. ㅁㄴㅇㄹ", 
        "3. ㅁㄴㄹ"]
@@ -50,7 +50,7 @@ ending_credit = ["결말에 도달하셨습니다. 즐겨주셔서 감사합니�
 
 
 def main_e1():
-       global day, step, choice, choice2, choice3
+       global day, step, choice, choice2, percent
        if step == 0:
               Text.output(m1_e1, cg[0])
        elif step == 1:
@@ -59,6 +59,7 @@ def main_e1():
                      if per(95, 1):
                             Text.output(m1_e211)
                      else:
+                            percent = False
                             Text.output(m1_e212)
               elif choice == 2:
                      choice2 = 2
@@ -68,29 +69,31 @@ def main_e1():
                             Text.output(m1_e222)
        elif step == 2:
               if choice2 == 1:
-                     next()
+                     if percent:
+                            next()
+                     else:
+                            Text.output(ending_credit)
               elif choice2 == 2:
-                     Text.output(ending_credit)
+                     if percent:
+                            next()
+                     else:
+                            Text.output(ending_credit)
 def main_e2():
-       global day, step, choice, choice2
-       if step == 0:
-              Text.output(m1_e1, cg[0])
-       elif step == 1:
-              if choice == 1:
-                     Text.output(m1_e21)
-                     choice2 = 1
-              elif choice == 2:
-                     Text.output(m1_e22)
-                     choice2 = 2
-       elif step == 2:
-              if choice2 == 1:
-                     next()
-              elif choice2 == 2:
-                     Text.output(ep3)
-       
+       pass
 
-       
-                     
+def sub_e(number):
+       if number == 1:
+              if step == 0:
+                     Text.output(sub1)
+              elif step == 1:
+                     if choice == 1:
+                            choice2 = 1
+                            Text.output(m1_e211)
+                     elif choice == 2:
+                            choice2 = 2
+                            Text.output(m1_e212)
+              elif step == 2:
+                     next()
 class Text:
        def output(episode = None, img = None):
               global day, step, choice
@@ -149,14 +152,11 @@ def per(r, seed):
               pers = seed
               perb = random.randint(1, 100) <= r
               return perb
-       
-
-
-
-    
 def next():
        global day, step
        day += 1
        step = 0
        choice = 0
        choice2 = 0  
+asdf
+asdf
