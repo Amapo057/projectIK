@@ -111,6 +111,8 @@ def sub_e(number):
               if step >= 0:
                      output(sub1_e1)
                      if step >= 1:
+                            if choi[0] == 1:
+                                   output(sub1_e111)
                             
 
 def output(episode, choin = 0, cg_n = None, background_n = 0):
