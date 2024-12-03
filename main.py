@@ -1,16 +1,18 @@
 # projectIK
 import pygame as pg
 import event as ev
-import random
 
 # 기본 변수
 PLAY = True
+# 상단 이미지
+stat = [pg.image.load('background/stat.png')]
 
 while PLAY:    
     for event in pg.event.get():
         if event.type == pg.QUIT:
             PLAY = False
 
+    ev.screen.blit(stat[0], (0, 0))
     if ev.day <= 1:
         ev.main_e1()
     elif ev.day == 4:
