@@ -36,6 +36,7 @@ pers = 0
 perb = False
 nums = 0
 numb = False
+sub_number = 0
 
 # 메인 1-1 텍스트
 m1_e1 = ["바람 한점 없는 조용한 밤, 간만에 거하게 달린 당신은 휘청이는 몸을 이끌고 집으로 향하는 길이였다.  신호등이 초록불로 바뀌자 저벅저벅 길을 건너는데 건너편에서 트럭 경적이 울린다. 얼핏보기에도 10톤은 족히 넘어보이는 트럭이 경적을 울리며 달려오는데 멈출 기미가 보이질 않는다. 어떻게 해야할까?", 
@@ -62,7 +63,7 @@ m1_e221 = ["내가 뒤돌아보자 그 녀석은 움찔하더니 묘한 기류�
            "계속"]
 
 
-sub1_e1 = ["나무가 드높게 솟아올라있고, 빽빽히 자란 숲을 헤멘지 어느새 3일차. 제대로 먹지도 못하고 그저 걷기만하던 도중, 당신은 흔들리는 수풀을 발견했습니다. 어쩌면 사냥할만한 동물일 수도 있습니다.", 
+sub1_e1 = ['당신은 숲을 건너다 수염이 덥수룩한 남성이 불을 피우고 ', 
        "1. 다가간다", 
        "2. 공격한다", 
        "3. 무시한다"]
@@ -117,7 +118,7 @@ def sub_e(number):
 
 def output(episode, choin = 0, cg_n = None, background_n = 0):
        global day, step, choi
-       screen.blit(background[background_n], (0, 0))
+       screen.blit(background[background_n], (0, 80))
        selected_rect = None
        for ind, ep in enumerate(episode):
               words = ep.split(' ')
@@ -144,7 +145,7 @@ def output(episode, choin = 0, cg_n = None, background_n = 0):
                      textrect = textobj.get_rect()
                      # x좌표, y좌표로 위치 잡음 y좌표는 for문이 반복할 때 마다 높이만큼 증가
                      if ind == 0:
-                            textrect.topleft = (20, 80 + i * font.get_height())
+                            textrect.topleft = (20, 100 + i * font.get_height())
                             if cg_n != None and i == len(lines)-1:
                                    screen.blit(cg[cg_n], (120, 140 + i * font.get_height()))
                      else:
@@ -183,49 +184,11 @@ def randnum(low, big, seed):
               perb = random.randint(low, big)
               return perb
 def next():
-       global day, step, choi
+       global day, step, choi, sub_number
        day += 1
        step = 0
        choi = [1] * 10
        per(1, 999)
+       sub_number = random.randint(1, 8)
 def end():
        output(ending_credit)
-
-
-       # elif step == 1:
-       #        if choi[0] == 1:
-       #               # per(확률, 아무숫자) 숫자가 동일하면 이전과 같은 결과를 출력함. 다른곳에서도 확률이 필요하다면 다른 숫자 사용
-       #               if per(95, 1):
-       #                      output(m1_e111)
-       #               else:
-       #                      # percent는 기본값이 True. 확률 실패했으면 다음 선택지 때 알려줘야 되니까
-       #                      percent = False
-       #                      output(m1_e112)
-       #        elif choi[0] == 2:
-       #               if per(95, 1):
-       #                      output(m1_e121)
-       #               else:
-       #                      output(m1_e122)
-       # elif step == 2:
-       #        print("step2")
-       #        if choi[1] == 1:
-       #               if percent:
-       #                      if choi[0] == 1:
-       #                             output(m1_e2)
-       #                      elif choi[0] == 2:
-       #                             next()
-       #               else:
-       #                      output(ending_credit)
-       #        elif choi[1] == 2:
-       #               if percent:
-       #                      next()
-       #               else:
-       #                      output(ending_credit)
-       # elif step == 3:
-       #        if choi[0] == 1:
-       #               if per(95, 2):
-       #                      output(m1_e211)
-       #               else:
-       #                      output(m1_e212)
-       #        elif choi[0] == 2:
-       #               output(m1_e221)
