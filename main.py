@@ -25,7 +25,7 @@ while PLAY:
         ev.main_e1()
     else:
         # 다 만들어지면 숫자대신 ev.sub_number들어갈 예정
-        ev.sub_e(1)
+        ev.sub_e(2)
 
     pg.display.flip()  # 화면 업데이트
 
